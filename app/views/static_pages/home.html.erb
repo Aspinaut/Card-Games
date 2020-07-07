@@ -1,1 +1,16 @@
 <h1>Let's play cards !</h1>
+
+<div class="container">
+  <div id="messages" class="comments">
+    <% @messages.each do |message| %>
+      <div id="message">
+        <p><span style="color:red"><%= message.username %> : </span><%= message.content %></p>
+      </div>
+    <% end %>
+  </div>
+  <div class="reply form">
+    <div class="field">
+      <textarea id="message" placeholder="Your message"></textarea>
+    </div>
+  </div>
+</div>

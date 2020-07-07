@@ -4,12 +4,7 @@
   <div id="messages" class="comments">
     <% @messages.each do |message| %>
       <div id="message">
-        <div class="author">
-          <%= message.username %>
-        </div>
-        <div class="content">
-          <%= message.content %>
-        </div>
+        <p><span style="color:red"><%= message.username %> : </span><%= message.content %></p>
       </div>
     <% end %>
   </div>

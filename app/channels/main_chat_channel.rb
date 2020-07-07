@@ -11,9 +11,8 @@ class MainChatChannel < ApplicationCable::Channel
     #   html = ApplicationController.render(partial: 'static_pages/message', locals: {message: message})
     #   ActionCable.server.broadcast('main_chat', message: html)
     # end
-    message = Message.create( content:data['message'])
+    message = Message.create(username: current_user.pseudo, content:data['message'])
     html = ApplicationController.render(partial: 'static_pages/message', locals: {message: message})
     ActionCable.server.broadcast('main_chat', message: html)
   end
-
 end

@@ -3,7 +3,17 @@ class MainChatChannel < ApplicationCable::Channel
     stream_from "main_chat"
   end
 
-  def unsubscribed
-    # Any cleanup needed when channel is unsubscribed
+  def speak(data)
+    # if !current_user
+    #   redirect_to new_registration_path
+    # else
+    #   message = Message.create(username: current_user, content:data['message'])
+    #   html = ApplicationController.render(partial: 'static_pages/message', locals: {message: message})
+    #   ActionCable.server.broadcast('main_chat', message: html)
+    # end
+    message = Message.create( content:data['message'])
+    html = ApplicationController.render(partial: 'static_pages/message', locals: {message: message})
+    ActionCable.server.broadcast('main_chat', message: html)
   end
+
 end
